@@ -17,9 +17,6 @@ export const useCartStore = defineStore('cart', {
     totalItems(): number {
       return this.items.reduce((total, item) => total + item.quantity, 0)
     },
-    totalAmount(): number {
-      return this.items.reduce((total, item) => total + (item.price * item.quantity), 0)
-    }
   },
   
   actions: {
@@ -32,19 +29,5 @@ export const useCartStore = defineStore('cart', {
         this.items.push({ ...product, quantity: 1 })
       }
     },
-    
-    removeFromCart(productId: number) {
-      const index = this.items.findIndex(item => item.id === productId)
-      if (index > -1) {
-        this.items.splice(index, 1)
-      }
-    },
-    
-    updateQuantity(productId: number, quantity: number) {
-      const item = this.items.find(item => item.id === productId)
-      if (item) {
-        item.quantity = quantity
-      }
-    }
   }
 })
