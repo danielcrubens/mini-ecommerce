@@ -17,7 +17,6 @@ export const useProducts = () => {
     console.log('Iniciando fetchProducts')
 
     try {
-      // Usando $fetch com tipagem explícita
       const data = await $fetch<ProductResponse>(`${useRuntimeConfig().public.apiBase}/products`, {
         method: 'GET',
         headers: {
